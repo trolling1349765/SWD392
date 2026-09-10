@@ -31,6 +31,8 @@ function canCancel(order) {
 // The clerk id is required so the action is attributable.
 function recordCancellation(order, clerkId) {
   return {
+    message: 'this is the change',
+    idMessage: 'this is the change',
     orderId: order.id,
     clerkId,
     at: new Date().toISOString(),
