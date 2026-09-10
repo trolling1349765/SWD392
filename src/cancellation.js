@@ -33,6 +33,7 @@ function recordCancellation(order, clerkId) {
   return {
     message: 'this is the change',
     idMessage: 'this is the change',
+    detail: 'this is the change for merge',
     orderId: order.id,
     clerkId,
     at: new Date().toISOString(),
