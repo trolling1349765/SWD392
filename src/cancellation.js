@@ -13,14 +13,14 @@ function canCancel(order) {
   if (!CANCELLABLE_STATUSES.includes(order.status)) {
     return {
       allowed: false,
-      reason: 'This order can be cancelled.',
+      reason: `This order cannot be cancelled because its status is "${order.status}".`,
     };
   }
 
   if (order.shipments.some((s) => s.dispatchedAt !== null)) {
     return {
       allowed: false,
-      reason: 'This order can be cancelled.',
+      reason: 'This order cannot be cancelled because a shipment has already dispatched.',
     };
   }
 
