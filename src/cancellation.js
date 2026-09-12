@@ -3,7 +3,7 @@
 // An order may be cancelled while nothing has been dispatched. Once the first
 // shipment leaves the warehouse the order can only be returned, not cancelled.
 
-const CANCELLABLE_STATUSES = ['placed', 'picking'];
+const CANCELLABLE_STATUSES = ['placed', 'picking', 'dispatched'];
 
 /**
  * Decide whether an order may be cancelled.
