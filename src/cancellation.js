@@ -17,6 +17,7 @@ function canCancel(order) {
     };
   }
 
+  // if item is custom or personalized, it cannot be cancelled
   const hasCustomItem = order.items.some((item) => item.isCustom || item.isPersonalized);
   if (hasCustomItem) {
     return {
