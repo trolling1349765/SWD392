@@ -5,6 +5,9 @@
 
 const CANCELLABLE_STATUSES = ['placed', 'picking'];
 
+// Staff-facing wording of the window, shown with every refusal.
+const CANCELLATION_WINDOW = 'Orders can be cancelled until the first shipment dispatches.';
+
 /**
  * Decide whether an order may be cancelled.
  * Returns { allowed: boolean, reason: string }.
@@ -13,14 +16,15 @@ function canCancel(order) {
   if (!CANCELLABLE_STATUSES.includes(order.status)) {
     return {
       allowed: false,
-      reason: 'This order can be cancelled.',
+        reason: `This order is in status "${order.status}". ${CANCELLATION_WINDOW}`,
+
     };
   }
 
   if (order.shipments.some((s) => s.dispatchedAt !== null)) {
     return {
       allowed: false,
-      reason: 'This order can be cancelled.',
+      reason: `This order is in status "${order.status}". ${CANCELLATION_WINDOW}`,
     };
   }
 
@@ -43,4 +47,5 @@ function recordCancellation(order, clerkId) {
 //this is change step 10
 
 
-module.exports = { canCancel, recordCancellation, CANCELLABLE_STATUSES };
+module.exports = { canCancel, recordCancellation, CANCELLABLE_STATUSES, CANCELLATION_WINDOW };
+
