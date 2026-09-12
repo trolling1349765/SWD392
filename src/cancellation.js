@@ -31,16 +31,11 @@ function canCancel(order) {
 // The clerk id is required so the action is attributable.
 function recordCancellation(order, clerkId) {
   return {
-    message: 'this is the change',
-    idMessage: 'this is the change',
-    detail: 'this is the change for merge',
     orderId: order.id,
     clerkId,
     at: new Date().toISOString(),
     action: 'cancelled',
   };
 }
-//this is change step 10
-
 
 module.exports = { canCancel, recordCancellation, CANCELLABLE_STATUSES };
