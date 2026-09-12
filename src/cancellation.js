@@ -22,7 +22,7 @@ function canCancel(order) {
   if (hasCustomItem) {
     return {
       allowed: false,
-      reason: 'Đơn hàng chứa sản phẩm đặt làm theo yêu cầu riêng nên không thể hủy.',
+      reason: 'Đơn hàng chứa sản phẩm đặt làm theo yêu cầu riêng nên không thể hủy. Vui lòng liên hệ bộ phận chăm sóc khách hàng để được hỗ trợ.',
     };
   }
 
