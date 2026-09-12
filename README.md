@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # OrderDesk — seed folder (Lab 02)
 
 A small slice of the OrderDesk back office. It has **no `.git` directory** — you create the
@@ -25,3 +26,7 @@ Nothing here needs to run. It is text and source you will stage, commit, branch 
 > message you will change and an unrelated typo elsewhere in the file, so that step 4's
 > `git add -p` split is a real split. And `dist/` exists so `.gitignore` has something to
 > actually ignore.
+=======
+# SWD392
+FPT-FA25
+>>>>>>> 3a904d30708733c89e92f637e7b2b708ee5d710f
