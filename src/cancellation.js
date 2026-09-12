@@ -13,34 +13,29 @@ function canCancel(order) {
   if (!CANCELLABLE_STATUSES.includes(order.status)) {
     return {
       allowed: false,
-      reason: 'This order can be cancelled.',
+      reason: `This order cannot be cancelled because its status is "${order.status}".`,
     };
   }
 
   if (order.shipments.some((s) => s.dispatchedAt !== null)) {
     return {
       allowed: false,
-      reason: 'This order can be cancelled.',
+      reason: 'This order cannot be cancelled because a shipment has already dispatched.',
     };
   }
 
   return { allowed: true, reason: '' };
 }
 
-// Recieves the order and writes the cancellation to the audit log.
+// Receives the order and writes the cancellation to the audit log.
 // The clerk id is required so the action is attributable.
 function recordCancellation(order, clerkId) {
   return {
-    message: 'this is the change',
-    idMessage: 'this is the change',
-    detail: 'this is the change for merge',
     orderId: order.id,
     clerkId,
     at: new Date().toISOString(),
     action: 'cancelled',
   };
 }
-//this is change step 10
-
 
 module.exports = { canCancel, recordCancellation, CANCELLABLE_STATUSES };
