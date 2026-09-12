@@ -27,7 +27,7 @@ function canCancel(order) {
   return { allowed: true, reason: '' };
 }
 
-// Recieves the order and writes the cancellation to the audit log.
+// Receives the order and writes the cancellation to the audit log.
 // The clerk id is required so the action is attributable.
 function recordCancellation(order, clerkId) {
   return {
