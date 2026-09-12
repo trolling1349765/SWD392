@@ -17,6 +17,14 @@ function canCancel(order) {
     };
   }
 
+  const hasCustomItem = order.items.some((item) => item.isCustom || item.isPersonalized);
+  if (hasCustomItem) {
+    return {
+      allowed: false,
+      reason: 'Đơn hàng chứa sản phẩm đặt làm theo yêu cầu riêng nên không thể hủy.',
+    };
+  }
+
   if (order.shipments.some((s) => s.dispatchedAt !== null)) {
     return {
       allowed: false,
