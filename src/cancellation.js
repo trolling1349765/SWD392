@@ -3,7 +3,7 @@
 // An order may be cancelled while nothing has been dispatched. Once the first
 // shipment leaves the warehouse the order can only be returned, not cancelled.
 
-const CANCELLABLE_STATUSES = ['placed', 'picking'];
+const CANCELLABLE_STATUSES = ['placed', 'picking', 'dispatched'];
 
 // Staff-facing wording of the window, shown with every refusal.
 const CANCELLATION_WINDOW = 'Orders can be cancelled until the first shipment dispatches.';
@@ -18,6 +18,15 @@ function canCancel(order) {
       allowed: false,
         reason: `This order is in status "${order.status}". ${CANCELLATION_WINDOW}`,
 
+    };
+  }
+
+  // if item is custom or personalized, it cannot be cancelled
+  const hasCustomItem = order.items.some((item) => item.isCustom || item.isPersonalized);
+  if (hasCustomItem) {
+    return {
+      allowed: false,
+      reason: 'Đơn hàng chứa sản phẩm đặt làm theo yêu cầu riêng nên không thể hủy. Vui lòng liên hệ bộ phận chăm sóc khách hàng để được hỗ trợ.',
     };
   }
 
